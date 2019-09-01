@@ -27,4 +27,4 @@ Cause of the error:
 
 ```ruby
 Looks like this app application was compiled on a different architecture, and because of that it is not working on Mac or Ubuntu type machines.
-``
+```
