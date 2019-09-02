@@ -1,6 +1,6 @@
-# Hands-On: Provision a Docker Swarm Cluster with Vagrant and Ansible
+# Hands-On: Implementing a Docker Swarm Cluster with Vagrant and Ansible
 
-### Automatically provision a Docker Swarm cluster composed of three masters and two workers
+### Provision a Docker Swarm cluster composed of three masters and two workers
 
 ## Preconditions:
 
@@ -107,7 +107,7 @@ The second playbook, _master.yaml_, initializes the Docker Swarm, and configures
         creates: cluster_initialized.txt
 ```
 
-The last playbook, _join.yaml_, sets up the actual Docker Swarm as composed of four hosts - two masters (so that the manager role is redunded) and two workers. In order to achieve that, two _join-tokens_ (one to join the cluster as a manager, and one to join the cluster as a worker) are generated on the host which initialized the swarm, and automatically passed to the remaining three hosts.
+The last playbook, _join.yaml_, sets up the actual Docker Swarm as composed of five hosts - three masters (so that the manager role is redunded) and two workers. In order to achieve that, two _join-tokens_ (one to join the cluster as a manager, and one to join the cluster as a worker) are generated on the host which initialized the swarm, and automatically passed to the remaining four hosts.
 
 ```yaml
 ---
@@ -133,6 +133,16 @@ The last playbook, _join.yaml_, sets up the actual Docker Swarm as composed of f
         worker_join_command: "{{ worker_join_command_raw.stdout_lines[2] }}"
 
 - hosts: swarm-master-2
+  become: true
+
+  tasks:
+    - name: Master joins cluster
+      shell: "{{ hostvars['swarm-master-1'].master_join_command }} >> node_joined.txt"
+      args:
+        chdir: $HOME
+        creates: node_joined.txt
+        
+- hosts: swarm-master-3
   become: true
 
   tasks:
