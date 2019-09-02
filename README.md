@@ -56,9 +56,9 @@ end
 A Bash script is then injected in node _swarm-worker-2_ to install Ansible via _pip_:
 
 ```sh
-$ sudo apt-get install -y python-pip sshpass
-$ sudo -H pip install --upgrade pip
-$ sudo -H pip install ansible
+$ sudo apt-get install -y python3-pip sshpass
+$ sudo -H pip3 install --upgrade pip
+$ sudo -H pip3 install ansible
 ```
 
 The cluster configuration is carried out by means of three Ansible playbooks. The first one, _cluster.yaml_, installs Docker CE on all four hosts, regardless of their target role:
