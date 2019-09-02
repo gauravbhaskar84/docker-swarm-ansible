@@ -4,11 +4,11 @@
 sudo apt-get update
 
 # Install dependencies
-sudo apt-get install -y python-pip sshpass
-sudo -H pip install --upgrade pip
+sudo apt-get install -y python3-pip sshpass
+sudo -H pip3 install --upgrade pip
 
 # Install Ansible
-sudo -H pip install ansible
+sudo -H pip3 install ansible
 
 # Run Ansible playbooks
 echo -e "\nRUNNING ANSIBLE [cluster.yml] **************************************************\n"
