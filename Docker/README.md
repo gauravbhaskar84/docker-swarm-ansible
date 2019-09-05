@@ -21,6 +21,11 @@ CMD ["/app/main"]
 ```sh
 $ cd Docker
 $ docker build -t testapp:ver1.0 -f Dockerfile.scratch .
+$ docker tag testapp:ver1.0 gauravbhaskar84/testapp1.0
+$ docker push gauravbhaskar84/testapp1.0
+
+## Now we can the below in the Vagrant machine:
+
 $ docker service create --name my-web1 --publish 8080:8080 --replicas 2 gauravbhaskar84/testapp1.0
 $ docker service ls
 ```
