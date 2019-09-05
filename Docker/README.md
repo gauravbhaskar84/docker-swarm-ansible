@@ -16,7 +16,7 @@ COPY . .
 CMD ["/app/main"]
 ```
 
-# Build an image and run the container:
+## Build an image and run the container:
 
 ```sh
 $ cd Docker
@@ -30,9 +30,9 @@ $ docker service create --name my-web1 --publish 8080:8080 --replicas 2 gauravbh
 $ docker service ls
 ```
 
-# Test the app (it will work for all IPs (.10 to .14) - we can pick anyone to test)
+## Test the app (it will work for all IPs (.10 to .14) - we can pick anyone to test)
 
-```sh
+```ssh
 http://192.168.77.10:8080/works
 http://192.168.77.10:8080/metrics
 ```
