@@ -4,7 +4,7 @@ Dockerfile using scratch to have minimum image size:
 FROM scratch
 
 ADD app /
-CMD ["./app"]
+CMD ["/app"]
 ````
 
 Build an image and run the container:
