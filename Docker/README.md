@@ -1,4 +1,4 @@
-# Dockerfile using scratch to have minimum image size:
+## Dockerfile using scratch to have minimum image size:
 
 ```ruby
 FROM scratch
@@ -6,7 +6,7 @@ FROM scratch
 ADD main /
 CMD ["/main"]
 ```
-# Dockerfile.alpine using the alpine image:
+## Dockerfile.alpine using the alpine image:
 
 ```ruby
 FROM alpine:latest
