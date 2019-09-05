@@ -32,5 +32,7 @@ $ docker service ls
 
 # Test the app (it will work for all IPs (.10 to .14) - we can pick anyone to test)
 
+```sh
 http://192.168.77.10:8080/works
 http://192.168.77.10:8080/metrics
+```
